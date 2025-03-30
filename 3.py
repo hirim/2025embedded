@@ -3,10 +3,12 @@ import cv2
 import mediapipe as mp
 
 
+# Picamera2 
 picam2 = Picamera2()
-picam2.configure(picam2.create_preview_configuration(main={'format': 'RGB888', 'size': (640, 480)}))
+picam2.preview_configuration.main.size = (640, 480)
+picam2.preview_configuration.main.format = "RGB888"
+picam2.configure("preview")
 picam2.start()
-
 
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
@@ -47,10 +49,8 @@ while True:
     
     cv2.putText(frame, f'Finger Count: {finger_count}', (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
 
-    
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     cv2.imshow('Finger Count', frame)
-
 
     if cv2.waitKey(1) & 0xFF == 27:
         break
-
