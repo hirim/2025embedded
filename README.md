@@ -1,3 +1,3 @@
 # 2025embedded
-# 1 MediaPipe Basic Project 
-# 3 MediaPipe Finger Count Print Project
+1.py MediaPipe Basic Project 
+3.py MediaPipe Finger Count Print Project
